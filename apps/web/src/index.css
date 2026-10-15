@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.008 145);
+  --foreground: oklch(0.23 0.025 165);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23 0.025 165);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23 0.025 165);
+  --primary: oklch(0.36 0.07 165);
+  --primary-foreground: oklch(0.98 0.01 145);
+  --secondary: oklch(0.94 0.02 145);
+  --secondary-foreground: oklch(0.29 0.04 165);
+  --muted: oklch(0.95 0.012 145);
+  --muted-foreground: oklch(0.52 0.025 165);
+  --accent: oklch(0.88 0.07 85);
+  --accent-foreground: oklch(0.28 0.04 75);
+  --destructive: oklch(0.58 0.21 26);
+  --border: oklch(0.89 0.02 145);
+  --input: oklch(0.89 0.02 145);
+  --ring: oklch(0.57 0.08 165);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #14231f;
+  background: #f5f6f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.workspace {
+  width: min(100% - 40px, 1040px);
+  min-height: 100vh;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.workspace-header,
+.workspace-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+.workspace-header {
+  border-bottom: 1px solid #d9dfd8;
+}
+
+.wordmark,
+.environment,
+.view-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wordmark {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.wordmark-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  color: #fff;
+  background: #173b34;
+  letter-spacing: 0;
+}
+
+.environment,
+.view-status {
+  color: #60716a;
+  font-size: 13px;
+}
+
+.environment > span,
+.view-status > span {
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #578968;
+}
+
+.view-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid #d9dfd8;
+}
+
+.view-link {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-inline: 14px;
+  border-bottom: 2px solid transparent;
+  color: #60716a;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-link[aria-current='page'] {
+  color: #173b34;
+  border-bottom-color: #2f705c;
+}
+
+.nav-index {
+  color: #89948d;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.view-panel {
+  position: relative;
+  flex: 1;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.view-panel h1 {
+  margin: 0;
+  font-size: clamp(24px, 1.6rem, 32px);
+  font-weight: 600;
+}
+
+.view-index {
+  color: #a8b3ab;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.workspace-footer {
+  min-height: 58px;
+  border-top: 1px solid #d9dfd8;
+  color: #78857e;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 620px) {
+  .workspace {
+    width: min(100% - 24px, 1040px);
+  }
+
+  .view-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .view-link {
+    min-height: 54px;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "friend-feud",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Friend Feud local-network game development workspace",
+  "workspaces": ["apps/*"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm run start:dev --workspace @friend-feud/api\" \"npm run dev --workspace @friend-feud/web\"",
+    "dev:api": "npm run start:dev --workspace @friend-feud/api",
+    "dev:web": "npm run dev --workspace @friend-feud/web",
+    "build": "npm run build --workspace @friend-feud/api && npm run build --workspace @friend-feud/web",
+    "lint": "npm run lint --workspace @friend-feud/api && npm run lint --workspace @friend-feud/web",
+    "test": "npm run test --workspace @friend-feud/api",
+    "test:e2e": "npm run test:e2e --workspace @friend-feud/api",
+    "format": "prettier --write \"apps/*/src/**/*.{ts,tsx,css}\" \"docs/**/*.md\"",
+    "db:migrate": "npm run migration:run --workspace @friend-feud/api",
+    "check:env": "node scripts/check-env.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "prettier": "^3.4.2"
+  }
+}

@@ -1,0 +1,24 @@
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Local env and database files
+.env
+.env.*
+!.env.example
+data/*.sqlite
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
+*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
